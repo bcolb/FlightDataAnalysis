@@ -8,3 +8,15 @@ From this analysis I hope to develop a model by which I can accurately predict w
 
 ## Data
 The data for this project was originally discovered through [Data.gov](https://explore.data.gov/Transportation/Airline-On-Time-Performance-and-Causes-of-Flight-D/ar4r-an9z). Custom data sets are available courtesy of RITA (Research and Innovative Technology Administration) and BTS (Bureau of Transportation Statics). These data sets can be [found at BTS.gov](https://explore.data.gov/Transportation/Airline-On-Time-Performance-and-Causes-of-Flight-D/ar4r-an9z).
+
+## Compilation
+
+In the src directory:
+
+> javac -cp Jama-1.0.3.jar Problem.java
+
+## Running
+
+In the src directory after compilation:
+
+> java Problem
