@@ -20,24 +20,11 @@ public class Flight {
     private int dayOfMonth;
     private int dayOfWeek;
     private String uniqueCarrier;
-    private int flightNumber;
     private String originAirportID;
-    private String originAirportSeqID;
-    private String originCityMarketID;
     private String destAirportID;
-    private String destAirportSeqID;
-    private String destCityMarketID;
-    private String crsDepTime;
-    private String depTime;
     private double depDelay;
-    private String crsArrTime;
-    private String arrTime;
     private double arrDelay;
     private boolean cancelled;
-    private double crsElapsedTime;
-    private double actualElapsedTime;
-    private double airTime;
-    private double distance;
     private double carrierDelay;
     private double weatherDelay;
     private double nasDelay;
@@ -55,67 +42,17 @@ public class Flight {
 	this.dayOfMonth = 0;
 	this.dayOfWeek = 0;
 	this.uniqueCarrier = "";
-	this.flightNumber = 0;
 	this.originAirportID = "";
-	this.originAirportSeqID = "";
-	this.originCityMarketID = "";
 	this.destAirportID = "";
-	this.destAirportSeqID = "";
-	this.destCityMarketID = "";
-	this.crsDepTime = "";
-	this.depTime = "";
 	this.depDelay = 0.0;
-	this.crsArrTime = "";
-	this.arrTime = "";
 	this.arrDelay = 0.0;
 	this.cancelled = false;
-	this.crsElapsedTime = 0;
-	this.actualElapsedTime = 0;
-	this.airTime = 0;
-	this.distance = 0;
 	this.carrierDelay = 0;
 	this.weatherDelay = 0;
 	this.nasDelay = 0;
 	this.securityDelay = 0;
 	this.lateAircraftDelay = 0;
 	this.divAirportLandings = 0;
-    }
-
-    /**
-     * A constructor that requires all 29 possible values be passed in. Use
-     * of this is not recommended for data sets larger than one month
-     * of flight data. 
-     */
-    public Flight(int year, int month, int dayOfMonth, int dayOfWeek, String uniqueCarrier, int flightNumber, String originAirportID, String originAirportSeqID, String originCityMarketID, String destAirportID, String destAirportSeqID, String destCityMarketID, String crsDepTime, String depTime, double depDelay, String crsArrTime, String arrTime, double arrDelay, boolean cancelled, double crsElapsedTime, double actualElapsedTime, double airTime, double distance, double carrierDelay, double weatherDelay, double nasDelay, double securityDelay, double lateAircraftDelay, int divAirportLandings) {
-	this.year = year;
-	this.month = month;
-	this.dayOfMonth = dayOfMonth;
-	this.dayOfWeek = dayOfWeek;
-	this.uniqueCarrier = uniqueCarrier;
-	this.flightNumber = flightNumber;
-	this.originAirportID = originAirportID;
-	this.originAirportSeqID = originAirportSeqID;
-	this.originCityMarketID = originCityMarketID;
-	this.destAirportID = destAirportID;
-	this.destAirportSeqID = destAirportSeqID;
-	this.destCityMarketID = destCityMarketID;
-	this.crsDepTime = crsDepTime;
-	this.depTime = depTime;
-	this.depDelay = depDelay;
-	this.crsArrTime = crsArrTime;
-	this.arrTime = arrTime;
-	this.arrDelay = arrDelay;
-	this.cancelled = cancelled;
-	this.crsElapsedTime = crsElapsedTime;
-	this.actualElapsedTime = actualElapsedTime;
-	this.airTime = airTime;
-	this.distance = distance;
-	this.carrierDelay = carrierDelay;
-	this.weatherDelay = weatherDelay;
-	this.nasDelay = nasDelay;
-	this.securityDelay = securityDelay;
-	this.lateAircraftDelay = lateAircraftDelay;
-	this.divAirportLandings = divAirportLandings;
     }
 
     /**
@@ -199,22 +136,6 @@ public class Flight {
     }
 
     /**
-     * @return the flightNumber
-     */
-    public int getFlightNumber()
-    {
-        return flightNumber;
-    }
-
-    /**
-     * @param flightNumber the flightNumber to set
-     */
-    public void setFlightNumber(int flightNumber)
-    {
-        this.flightNumber = flightNumber;
-    }
-
-    /**
      * @return the originAirportID
      */
     public String getOriginAirportID()
@@ -228,38 +149,6 @@ public class Flight {
     public void setOriginAirportID(String originAirportID)
     {
         this.originAirportID = originAirportID;
-    }
-
-    /**
-     * @return the originAirportSeqID
-     */
-    public String getOriginAirportSeqID()
-    {
-        return originAirportSeqID;
-    }
-
-    /**
-     * @param originAirportSeqID the originAirportSeqID to set
-     */
-    public void setOriginAirportSeqID(String originAirportSeqID)
-    {
-        this.originAirportSeqID = originAirportSeqID;
-    }
-
-    /**
-     * @return the originCityMarketID
-     */
-    public String getOriginCityMarketID()
-    {
-        return originCityMarketID;
-    }
-
-    /**
-     * @param originCityMarketID the originCityMarketID to set
-     */
-    public void setOriginCityMarketID(String originCityMarketID)
-    {
-        this.originCityMarketID = originCityMarketID;
     }
 
     /**
@@ -279,70 +168,6 @@ public class Flight {
     }
 
     /**
-     * @return the destAirportSeqID
-     */
-    public String getDestAirportSeqID()
-    {
-        return destAirportSeqID;
-    }
-
-    /**
-     * @param destAirportSeqID the destAirportSeqID to set
-     */
-    public void setDestAirportSeqID(String destAirportSeqID)
-    {
-        this.destAirportSeqID = destAirportSeqID;
-    }
-
-    /**
-     * @return the destCityMarketID
-     */
-    public String getDestCityMarketID()
-    {
-        return destCityMarketID;
-    }
-
-    /**
-     * @param destCityMarketID the destCityMarketID to set
-     */
-    public void setDestCityMarketID(String destCityMarketID)
-    {
-        this.destCityMarketID = destCityMarketID;
-    }
-
-    /**
-     * @return the crsDepTime
-     */
-    public String getCrsDepTime()
-    {
-        return crsDepTime;
-    }
-
-    /**
-     * @param crsDepTime the crsDepTime to set
-     */
-    public void setCrsDepTime(String crsDepTime)
-    {
-        this.crsDepTime = crsDepTime;
-    }
-
-    /**
-     * @return the depTime
-     */
-    public String getDepTime()
-    {
-        return depTime;
-    }
-
-    /**
-     * @param depTime the depTime to set
-     */
-    public void setDepTime(String depTime)
-    {
-        this.depTime = depTime;
-    }
-
-    /**
      * @return the depDelay
      */
     public double getDepDelay()
@@ -356,38 +181,6 @@ public class Flight {
     public void setDepDelay(double depDelay)
     {
         this.depDelay = depDelay;
-    }
-
-    /**
-     * @return the crsArrTime
-     */
-    public String getCrsArrTime()
-    {
-        return crsArrTime;
-    }
-
-    /**
-     * @param crsArrTime the crsArrTime to set
-     */
-    public void setCrsArrTime(String crsArrTime)
-    {
-        this.crsArrTime = crsArrTime;
-    }
-
-    /**
-     * @return the arrTime
-     */
-    public String getArrTime()
-    {
-        return arrTime;
-    }
-
-    /**
-     * @param arrTime the arrTime to set
-     */
-    public void setArrTime(String arrTime)
-    {
-        this.arrTime = arrTime;
     }
 
     /**
@@ -420,70 +213,6 @@ public class Flight {
     public void setCancelled(boolean cancelled)
     {
         this.cancelled = cancelled;
-    }
-
-    /**
-     * @return the crsElapsedTime
-     */
-    public double getCrsElapsedTime()
-    {
-        return crsElapsedTime;
-    }
-
-    /**
-     * @param crsElapsedTime the crsElapsedTime to set
-     */
-    public void setCrsElapsedTime(double crsElapsedTime)
-    {
-        this.crsElapsedTime = crsElapsedTime;
-    }
-
-    /**
-     * @return the actualElapsedTime
-     */
-    public double getActualElapsedTime()
-    {
-        return actualElapsedTime;
-    }
-
-    /**
-     * @param actualElapsedTime the actualElapsedTime to set
-     */
-    public void setActualElapsedTime(double actualElapsedTime)
-    {
-        this.actualElapsedTime = actualElapsedTime;
-    }
-
-    /**
-     * @return the airTime
-     */
-    public double getAirTime()
-    {
-        return airTime;
-    }
-
-    /**
-     * @param airTime the airTime to set
-     */
-    public void setAirTime(double airTime)
-    {
-        this.airTime = airTime;
-    }
-
-    /**
-     * @return the distance
-     */
-    public double getDistance()
-    {
-        return distance;
-    }
-
-    /**
-     * @param distance the distance to set
-     */
-    public void setDistance(double distance)
-    {
-        this.distance = distance;
     }
 
     /**

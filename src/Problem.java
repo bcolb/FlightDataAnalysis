@@ -19,6 +19,9 @@ import java.io.IOException;
  */
 public class Problem {
 
+    // static variables
+    private static final boolean DEBUG = true;
+
     // Fields
     public HashMap<Integer, String> months;
     public LinkedList<Flight> flights;
@@ -27,118 +30,74 @@ public class Problem {
      * A parameterless constructor that, for the moment, creates a list of
      * flights based off of the hard coded filenames.
      */
-    public Problem() {
+    public Problem(LinkedList<String> months) {
 	flights = new LinkedList<Flight>();
-	String january ="../data/224617947_T_ONTIME.csv";
-	readMonth(january);
+
+	if(DEBUG) System.out.println("Reading data into memory...");
+
+	for (String month: months) {
+	    readMonth(month);
+	}
+
+	if(DEBUG) System.out.println("Finished reading data into memory...");
     }
 
     /**
      * 	@param filename the name of the csv file
      */
     public void readMonth(String filename) {
+
 	BufferedReader br = null;
 	String splitter = ",";
 	String line = "";
+
 	try {
 	    br = new BufferedReader(new FileReader(filename));
 	    line = br.readLine();
 	    while ((line = br.readLine()) != null) {
 		String[] data = line.split(splitter);
+		Flight flight = new Flight();
 		for(int i = 0; i < data.length; i++){
 		    data[i] = data[i].replaceAll("^\"|\"$", "");
 		}
-		int year = 2014;
-		if (!data[0].equals("")) year = Integer.parseInt(data[0]);
-		int month = 1;
-		if (!data[1].equals("")) month = Integer.parseInt(data[1]);
-		int dayOfMonth = 1;
-		if (!data[2].equals("")) dayOfMonth = Integer.parseInt(data[2]);
-		int dayOfWeek = 1;
-		if (!data[3].equals("")) dayOfWeek = Integer.parseInt(data[3]);
-		String uniqueCarrier = data[4];
-		int flightNumber = 0000;
-		if (!data[5].equals("")) flightNumber=Integer.parseInt(data[5]);
-
-		String originAirportID = data[6];
-		String originAirportSeqID = data[7];
-		String originCityMarketID = data[8];
-		String destAirportID = data[9];
-		String destAirportSeqID = data[10];
-		String destCityMarketID = data[11];
-		String crsDepTime = data[12];
-		String depTime = data[13];
-
-		double depDelay = 0.0;
 		if (!data[14].equals("")) {
-		    depDelay = Double.parseDouble(data[14]);
+		    flight.setDepDelay(Double.parseDouble(data[14]));
 		}
-		String crsArrTime = data[15];
-		String arrTime = data[16];
-
-		double arrDelay = 0.0;
 		if (!data[17].equals("")) {
-		    arrDelay = Double.parseDouble(data[17]);
+		    flight.setArrDelay(Double.parseDouble(data[17]));
 		}
-		boolean cancelled = false;
 		if(!data[18].equals("")) {
 		    if( Double.parseDouble(data[18]) == 1){
-			cancelled = true;
+			flight.setCancelled(true);
 		    }
 		}
-
-		double crsElapsedTime = 0.0;
-		if (!data[19].equals("")) {
-		    crsElapsedTime = Double.parseDouble(data[19]);
-		}
-		double actualElapsedTime = 0.0;
-		if (!data[20].equals("")) {
-		    actualElapsedTime = Double.parseDouble(data[20]);
-		}
-		double airTime = 0.0;
-		if (!data[21].equals("")) {
-		    airTime = Double.parseDouble(data[21]);
-		}
-		double distance = 0.0;
-		if (!data[22].equals("")) {
-		    distance = Double.parseDouble(data[22]);
-		}
-		double carrierDelay = 0.0;
 		if (!data[23].equals("")) {
-		    carrierDelay = Double.parseDouble(data[23]);
+		    flight.setCarrierDelay(Double.parseDouble(data[23]));
 		}
-		double weatherDelay = 0.0;
 		if (!data[24].equals("")) {
-		    weatherDelay = Double.parseDouble(data[24]);
+		    flight.setWeatherDelay(Double.parseDouble(data[24]));
 		}
-		double nasDelay = 0.0;
 		if (!data[25].equals("")) {
-		    nasDelay = Double.parseDouble(data[25]);
+		    flight.setNasDelay(Double.parseDouble(data[25]));
 		}
-		double securityDelay = 0.0;
 		if (!data[26].equals("")) {
-		    securityDelay = Double.parseDouble(data[26]);
+		    flight.setSecurityDelay(Double.parseDouble(data[26]));
 		}
-		double lateAircraftDelay = 0.0;
 		if (!data[27].equals("")) {
-		    lateAircraftDelay = Double.parseDouble(data[27]);
+		    flight.setLateAircraftDelay(Double.parseDouble(data[27]));
 		}
-		int divAirportLandings = 0;
 		if (!data[28].equals("")) {
-		    divAirportLandings = Integer.parseInt(data[28]);
+		    flight.setDivAirportLandings(Integer.parseInt(data[28]));
 		}
-
-		// Create a new Flight from the above data
-		Flight flight = new Flight(year, month, dayOfMonth, dayOfWeek, uniqueCarrier, flightNumber, originAirportID, originAirportSeqID, originCityMarketID, destAirportID, destAirportSeqID, destCityMarketID, crsDepTime, depTime, depDelay, crsArrTime, arrTime, arrDelay, cancelled, crsElapsedTime, actualElapsedTime, airTime, distance, carrierDelay, weatherDelay, nasDelay, securityDelay, lateAircraftDelay, divAirportLandings);
 		this.flights.add(flight);
 	    }
-	} catch (FileNotFoundException ex ) {
+	} /*catch (FileNotFoundException ex ) {
 	    System.out.println("File Not Found");
 	    System.exit(0);
 	} catch (IOException ex) {
 	    System.out.println("IOException");
 	    System.exit(0);
-	} catch (Exception ex) {
+	    } */catch (Exception ex) {
 	    System.out.println("Other exception");
 	    ex.printStackTrace();
 	    System.exit(0);
@@ -160,13 +119,26 @@ public class Problem {
     }
 
     public static void main(String args[]) {
+	// Create a new list that contains filenames
+	LinkedList<String> months = new LinkedList<String>();
+	months.add("../data/JANUARY_2013_FLIGHTS.csv");
+	months.add("../data/FEBRUARY_2013_FLIGHTS.csv");
+	//months.add("../data/MARCH_2013_FLIGHTS.csv");
+	//months.add("../data/APRIL_2013_FLIGHTS.csv");
+	//months.add("../data/MAY_2013_FLIGHTS.csv");
+	//months.add("../data/JUNE_2013_FLIGHTS.csv");
+	//months.add("../data/JULY_2013_FLIGHTS.csv");
+	//months.add("../data/AUGUST_2013_FLIGHTS.csv");
+	//months.add("../data/SEPTEMBER_2013_FLIGHTS.csv");
+	//months.add("../data/OCTOBER_2013_FLIGHTS.csv");
+	//months.add("../data/NOVEMBER_2013_FLIGHTS.csv");
+	//months.add("../data/DECEMBER_2013_FLIGHTS.csv");
 
 	// Initialize the problem
-	Problem problem = new Problem();
+	Problem problem = new Problem(months);
 
 	// Calculate some basic values
 	Solution.calculateBasicData(problem);
 
-	// More to come
     }
 }
