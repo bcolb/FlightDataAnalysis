@@ -6,48 +6,48 @@
  */
 
 /**
- * Represents a single flight's information.
+ * Represents a single flight's data. Includes 29 state variables including 
+ * date, arrival, destination, and delay information.
  */
-public class Flight{
+public class Flight {
 
     /*
      * Each of the fields below represents a particular attribute for
-     * that flight. Note that values that are not set are represented either
-     * as 0, 0.0, or "".
+     * that flight.
      */
-    public int year;
-    public int month;
-    public int dayOfMonth;
-    public int dayOfWeek;
-    public String uniqueCarrier;
-    public int flightNumber;
-    public String originAirportID;
-    public String originAirportSeqID;
-    public String originCityMarketID;
-    public String destAirportID;
-    public String destAirportSeqID;
-    public String destCityMarketID;
-    public String crsDepTime;
-    public String depTime;
-    public double depDelay;
-    public String crsArrTime;
-    public String arrTime;
-    public double arrDelay;
-    public boolean cancelled;
-    public double crsElapsedTime;
-    public double actualElapsedTime;
-    public double airTime;
-    public double distance;
-    public double carrierDelay;
-    public double weatherDelay;
-    public double nasDelay;
-    public double securityDelay;
-    public double lateAircraftDelay;
-    public int divAirportLandings;
+    private int year;
+    private int month;
+    private int dayOfMonth;
+    private int dayOfWeek;
+    private String uniqueCarrier;
+    private int flightNumber;
+    private String originAirportID;
+    private String originAirportSeqID;
+    private String originCityMarketID;
+    private String destAirportID;
+    private String destAirportSeqID;
+    private String destCityMarketID;
+    private String crsDepTime;
+    private String depTime;
+    private double depDelay;
+    private String crsArrTime;
+    private String arrTime;
+    private double arrDelay;
+    private boolean cancelled;
+    private double crsElapsedTime;
+    private double actualElapsedTime;
+    private double airTime;
+    private double distance;
+    private double carrierDelay;
+    private double weatherDelay;
+    private double nasDelay;
+    private double securityDelay;
+    private double lateAircraftDelay;
+    private int divAirportLandings;
 
     /**
      * A parameterless constructor that creates a blank flight. All values
-     * are initialized to 0, "", or 0.0 for int, String, and double respectively.
+     * are initialized to 0, "", or 0.0 for int, String, and double.
      */
     public Flight() {
 	this.year = 0;
@@ -82,7 +82,9 @@ public class Flight{
     }
 
     /**
-     * A constructor that requires all 29 possible values be passed in. 
+     * A constructor that requires all 29 possible values be passed in. Use
+     * of this is not recommended for data sets larger than one month
+     * of flight data. 
      */
     public Flight(int year, int month, int dayOfMonth, int dayOfWeek, String uniqueCarrier, int flightNumber, String originAirportID, String originAirportSeqID, String originCityMarketID, String destAirportID, String destAirportSeqID, String destCityMarketID, String crsDepTime, String depTime, double depDelay, String crsArrTime, String arrTime, double arrDelay, boolean cancelled, double crsElapsedTime, double actualElapsedTime, double airTime, double distance, double carrierDelay, double weatherDelay, double nasDelay, double securityDelay, double lateAircraftDelay, int divAirportLandings) {
 	this.year = year;
