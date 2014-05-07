@@ -18,7 +18,7 @@ Check [here for information regarding JAMA](http://math.nist.gov/javanumerics/ja
 
 In the src directory:
 
-> javac -cp Jama-1.0.3.jar Problem.java
+> javac -cp .:Jama-1.0.3.jar Problem.java
 
 ## Running
 
